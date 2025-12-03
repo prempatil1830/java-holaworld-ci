@@ -2,7 +2,7 @@ name: Maven CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main" ] # Use "main" or "master" depending on your branch name
 
 jobs:
   maven:
@@ -18,9 +18,9 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Maven
-      
+        # Using the standard 'package' goal which builds and creates the artifact
         run: mvn -B clean package 
 
       - name: Run the App
-  
+        # Ensure the -cp target/classes is correct for your project structure
         run: java -cp target/classes com.example.HelloWorld
